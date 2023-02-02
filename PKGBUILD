@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 build() {
   cd $srcdir/cvt_modeline_calculator_12
-  gcc cvt12.c -O2 -o cvt12 -lm -Wall
+  gcc $CFLAGS cvt12.c -O2 -o cvt12 -lm -Wall $LDFLAGS
 }
 
 package() {
