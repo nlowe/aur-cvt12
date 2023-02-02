@@ -1,20 +1,28 @@
-
 # Maintainer: Nathan Lowe <techwiz96@gmail.com>
+# Contributor: éclairevoyant
+
 # Upstream URL: https://github.com/kevinlekiller/cvt_modeline_calculator_12
 #
 # For improvements/fixes to this package, please send a pull request:
 # https://github.com/nlowe/aur-cvt12
 
 pkgname=cvt12-git
-pkgver=1.2
+pkgver=r17.6f66135
 pkgrel=1
+epoch=1
 pkgdesc='Generate mode timings using the CVT v1.2 or CVT v1.1 Timing Standards'
 arch=('i686' 'x86_64')
 url='https://github.com/kevinlekiller/cvt_modeline_calculator_12'
-license=('custom')
-makedepends=('gcc>=4.8.0', 'git')
+license=('BSD')
+depends=('glibc')
+makedepends=('git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/cvt_modeline_calculator_12"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "$srcdir/cvt_modeline_calculator_12"
