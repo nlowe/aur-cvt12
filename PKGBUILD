@@ -17,15 +17,15 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 build() {
-  cd $srcdir/cvt_modeline_calculator_12
+  cd "$srcdir/cvt_modeline_calculator_12"
   gcc $CFLAGS cvt12.c -O2 -o cvt12 -lm -Wall $LDFLAGS
 }
 
 package() {
   install -Dm755 "$srcdir/cvt_modeline_calculator_12/cvt12" "$pkgdir/usr/bin/cvt12"
 
-  mkdir -p $pkgdir/usr/share/licenses/cvt12
-  cat <<'EOF' >> $pkgdir/usr/share/licenses/cvt12/LICENSE
+  mkdir -p "$pkgdir/usr/share/licenses/cvt12"
+  cat <<'EOF' >> "$pkgdir/usr/share/licenses/cvt12/LICENSE"
 Copyright (c) 2001, Andy Ritger  aritger@nvidia.com
 All rights reserved.
 
